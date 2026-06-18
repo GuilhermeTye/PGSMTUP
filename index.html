@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Smart UP Cerro Azul</title>
 
   <style>
@@ -13,24 +14,28 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: #050505;
-      color: white;
+      background: #ffffff;
+      color: #111827;
     }
 
     header {
       width: 100%;
-      padding: 24px 8%;
+      padding: 20px 8%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(12, 120, 134, 0.12);
       position: fixed;
       top: 0;
       left: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(10px);
-      z-index: 10;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 100;
     }
 
     .logo-area {
@@ -40,28 +45,38 @@
     }
 
     .logo-area img {
-      width: 58px;
-      height: 58px;
+      width: 62px;
+      height: 62px;
       object-fit: contain;
+      filter: drop-shadow(0 0 16px rgba(39, 185, 179, 0.35));
     }
 
     .logo-text h1 {
-      font-size: 24px;
+      font-size: 25px;
+      font-weight: 900;
+      color: #0C7886;
       letter-spacing: 1px;
     }
 
     .logo-text span {
-      color: #27B9B3;
+      color: #EE6D46;
+      font-weight: 800;
       font-size: 13px;
-      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 26px;
+      align-items: center;
     }
 
     nav a {
-      color: white;
       text-decoration: none;
-      margin-left: 26px;
-      font-weight: bold;
+      color: #0f172a;
+      font-weight: 800;
       font-size: 14px;
+      transition: 0.3s;
     }
 
     nav a:hover {
@@ -70,43 +85,45 @@
 
     .hero {
       min-height: 100vh;
-      padding: 150px 8% 80px;
+      padding: 145px 8% 80px;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.05fr 0.95fr;
       align-items: center;
       gap: 50px;
       background:
-        radial-gradient(circle at top right, rgba(39,185,179,0.32), transparent 35%),
-        radial-gradient(circle at bottom left, rgba(238,109,70,0.28), transparent 35%),
-        #050505;
+        radial-gradient(circle at top right, rgba(39,185,179,0.22), transparent 38%),
+        radial-gradient(circle at bottom left, rgba(238,109,70,0.18), transparent 38%),
+        linear-gradient(180deg, #ffffff, #f8ffff);
     }
 
     .badge {
       display: inline-block;
       padding: 10px 18px;
-      border: 1px solid rgba(39,185,179,0.5);
       border-radius: 999px;
-      color: #27B9B3;
-      font-weight: bold;
-      margin-bottom: 22px;
-      background: rgba(39,185,179,0.08);
+      background: rgba(39,185,179,0.10);
+      color: #0C7886;
+      border: 1px solid rgba(39,185,179,0.30);
+      font-weight: 900;
+      margin-bottom: 24px;
     }
 
     .hero h2 {
-      font-size: 58px;
-      line-height: 1.05;
-      margin-bottom: 22px;
+      font-size: 62px;
+      line-height: 1.03;
+      color: #0f172a;
+      margin-bottom: 24px;
+      font-weight: 950;
     }
 
     .hero h2 span {
-      color: #27B9B3;
+      color: #0C7886;
     }
 
     .hero p {
       font-size: 18px;
-      color: #d6d6d6;
-      max-width: 560px;
-      line-height: 1.6;
+      line-height: 1.7;
+      color: #475569;
+      max-width: 580px;
       margin-bottom: 34px;
     }
 
@@ -118,49 +135,82 @@
 
     .btn {
       padding: 15px 24px;
-      border-radius: 14px;
+      border-radius: 16px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 900;
       transition: 0.3s;
+      display: inline-block;
     }
 
     .btn-whatsapp {
       background: linear-gradient(135deg, #27B9B3, #0C7886);
-      color: white;
+      color: #ffffff;
+      box-shadow: 0 18px 40px rgba(12,120,134,0.25);
     }
 
     .btn-instagram {
-      background: transparent;
-      color: white;
-      border: 1px solid rgba(255,255,255,0.25);
+      background: #ffffff;
+      color: #0C7886;
+      border: 1px solid rgba(12,120,134,0.18);
+      box-shadow: 0 14px 32px rgba(15,23,42,0.08);
     }
 
     .btn:hover {
-      transform: translateY(-3px);
-      opacity: 0.9;
+      transform: translateY(-4px);
     }
 
     .hero-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 34px;
-      padding: 36px;
+      position: relative;
+      overflow: hidden;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(12,120,134,0.16);
+      border-radius: 38px;
+      padding: 44px 34px;
       text-align: center;
-      box-shadow: 0 30px 90px rgba(0,0,0,0.45);
+      box-shadow: 0 30px 90px rgba(12,120,134,0.18);
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      background: radial-gradient(
+        circle,
+        rgba(39,185,179,0.32),
+        rgba(12,120,134,0.16),
+        transparent 70%
+      );
+      top: 46%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
     }
 
     .hero-card img {
-      width: 280px;
+      width: 330px;
       max-width: 100%;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 0 38px rgba(39,185,179,0.35));
       margin-bottom: 24px;
     }
 
+    .hero-card h3,
+    .hero-card p {
+      position: relative;
+      z-index: 2;
+    }
+
     .hero-card h3 {
-      font-size: 28px;
-      margin-bottom: 10px;
+      color: #0C7886;
+      font-size: 30px;
+      margin-bottom: 12px;
+      font-weight: 950;
     }
 
     .hero-card p {
+      color: #475569;
       margin: 0 auto;
       font-size: 15px;
     }
@@ -171,17 +221,19 @@
 
     .section-title {
       text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .section-title h2 {
-      font-size: 38px;
-      margin-bottom: 12px;
+      margin-bottom: 52px;
     }
 
     .section-title span {
       color: #EE6D46;
-      font-weight: bold;
+      font-weight: 950;
+      letter-spacing: 1px;
+    }
+
+    .section-title h2 {
+      font-size: 40px;
+      color: #0f172a;
+      margin-top: 10px;
     }
 
     .cards {
@@ -191,76 +243,123 @@
     }
 
     .card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 32px;
-      border-radius: 26px;
+      background: #ffffff;
+      border: 1px solid rgba(12,120,134,0.12);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 20px 50px rgba(15,23,42,0.08);
       transition: 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-6px);
-      border-color: #27B9B3;
+      transform: translateY(-7px);
+      box-shadow: 0 26px 65px rgba(12,120,134,0.18);
+      border-color: rgba(39,185,179,0.50);
     }
 
     .card h3 {
-      color: #27B9B3;
+      color: #0C7886;
+      font-size: 23px;
       margin-bottom: 14px;
-      font-size: 22px;
     }
 
     .card p {
-      color: #d0d0d0;
-      line-height: 1.6;
+      color: #475569;
+      line-height: 1.65;
+    }
+
+    .products {
+      background:
+        radial-gradient(circle at top left, rgba(39,185,179,0.13), transparent 32%),
+        #f8ffff;
+    }
+
+    .product-card {
+      text-align: center;
+    }
+
+    .product-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #27B9B3, #0C7886);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 30px;
+      box-shadow: 0 16px 34px rgba(12,120,134,0.24);
     }
 
     .cta {
       background: linear-gradient(135deg, #0C7886, #27B9B3);
-      border-radius: 36px;
-      padding: 55px;
+      border-radius: 40px;
+      padding: 60px 36px;
       text-align: center;
+      color: white;
+      box-shadow: 0 30px 80px rgba(12,120,134,0.28);
     }
 
     .cta h2 {
-      font-size: 38px;
-      margin-bottom: 18px;
+      font-size: 40px;
+      margin-bottom: 16px;
     }
 
     .cta p {
-      color: #f2f2f2;
+      font-size: 18px;
       margin-bottom: 28px;
-      font-size: 17px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .cta .btn {
+      background: white;
+      color: #0C7886;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      background: linear-gradient(135deg, #27B9B3, #0C7886);
+      color: white;
+      padding: 16px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 950;
+      box-shadow: 0 18px 42px rgba(12,120,134,0.36);
+      z-index: 200;
     }
 
     footer {
       padding: 36px 8%;
       text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: #aaa;
+      background: #050505;
+      color: #d1d5db;
     }
 
     @media (max-width: 900px) {
       header {
         position: relative;
         flex-direction: column;
-        gap: 18px;
+        gap: 16px;
+        padding: 20px;
       }
 
       nav {
-        display: flex;
-        gap: 16px;
         flex-wrap: wrap;
         justify-content: center;
-      }
-
-      nav a {
-        margin-left: 0;
+        gap: 18px;
       }
 
       .hero {
         grid-template-columns: 1fr;
-        padding-top: 70px;
+        padding: 60px 6% 70px;
         text-align: center;
+      }
+
+      .hero h2 {
+        font-size: 42px;
       }
 
       .hero p {
@@ -272,16 +371,24 @@
         justify-content: center;
       }
 
-      .hero h2 {
-        font-size: 42px;
-      }
-
       .cards {
         grid-template-columns: 1fr;
       }
 
-      .cta {
-        padding: 36px 24px;
+      section {
+        padding: 70px 6%;
+      }
+
+      .section-title h2,
+      .cta h2 {
+        font-size: 32px;
+      }
+
+      .floating-whatsapp {
+        right: 14px;
+        bottom: 14px;
+        padding: 14px 16px;
+        font-size: 14px;
       }
     }
   </style>
@@ -301,6 +408,7 @@
     <nav>
       <a href="#inicio">Início</a>
       <a href="#servicos">Serviços</a>
+      <a href="#produtos">Produtos</a>
       <a href="#contato">Contato</a>
     </nav>
   </header>
@@ -316,8 +424,7 @@
 
       <p>
         Sua loja de tecnologia em Cerro Azul. Trabalhamos com celulares,
-        acessórios, atendimento personalizado e soluções para deixar você
-        sempre conectado.
+        acessórios, películas, carregadores e atendimento rápido pelo WhatsApp.
       </p>
 
       <div class="buttons">
@@ -332,25 +439,25 @@
     </div>
 
     <div class="hero-card">
-     <img src="assets/logo.png" alt="Smart UP Cerro Azul">
+      <img src="assets/logo.png" alt="Logo Smart UP">
       <h3>Atendimento rápido</h3>
       <p>
-        Fale conosco pelo WhatsApp e conheça nossos produtos disponíveis.
+        Fale conosco e confira produtos, valores e disponibilidade.
       </p>
     </div>
   </main>
 
   <section id="servicos">
     <div class="section-title">
-      <span>O que oferecemos</span>
-      <h2>Soluções para o seu dia a dia</h2>
+      <span>O QUE OFERECEMOS</span>
+      <h2>Soluções para você ficar conectado</h2>
     </div>
 
     <div class="cards">
       <div class="card">
         <h3>Celulares</h3>
         <p>
-          Aparelhos selecionados com atendimento direto e suporte na escolha.
+          Aparelhos selecionados para quem busca qualidade, confiança e bom atendimento.
         </p>
       </div>
 
@@ -362,9 +469,42 @@
       </div>
 
       <div class="card">
-        <h3>Atendimento</h3>
+        <h3>Atendimento pelo WhatsApp</h3>
         <p>
-          Compra rápida, orçamento pelo WhatsApp e acompanhamento pelo Instagram.
+          Orçamento rápido, informações de produtos e contato direto com a Smart UP.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="produtos" class="products">
+    <div class="section-title">
+      <span>PRODUTOS</span>
+      <h2>O que você encontra na Smart UP</h2>
+    </div>
+
+    <div class="cards">
+      <div class="card product-card">
+        <div class="product-icon">📱</div>
+        <h3>Smartphones</h3>
+        <p>
+          Modelos para uso diário, trabalho, redes sociais, fotos e vídeos.
+        </p>
+      </div>
+
+      <div class="card product-card">
+        <div class="product-icon">🔋</div>
+        <h3>Carregadores</h3>
+        <p>
+          Fontes, cabos e soluções para manter seu aparelho sempre carregado.
+        </p>
+      </div>
+
+      <div class="card product-card">
+        <div class="product-icon">🛡️</div>
+        <h3>Películas e Capinhas</h3>
+        <p>
+          Proteção com estilo para deixar seu celular mais seguro no dia a dia.
         </p>
       </div>
     </div>
@@ -374,14 +514,18 @@
     <div class="cta">
       <h2>Quer fazer um orçamento?</h2>
       <p>
-        Entre em contato agora com a Smart UP Cerro Azul.
+        Clique no botão abaixo e fale agora com a Smart UP Cerro Azul.
       </p>
 
-      <a class="btn btn-whatsapp" href="https://wa.me/5541989015430" target="_blank">
-        Falar com a Smart UP
+      <a class="btn" href="https://wa.me/5541989015430" target="_blank">
+        Falar no WhatsApp
       </a>
     </div>
   </section>
+
+  <a class="floating-whatsapp" href="https://wa.me/5541989015430" target="_blank">
+    WhatsApp
+  </a>
 
   <footer>
     © 2026 Smart UP Cerro Azul — WhatsApp: (41) 98901-5430 — Instagram: @smartup_cerroazul
